@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Web based 3D Authoring</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  </head>
+  <body ontouchstart="">
+
+    <link href="css/main.css" rel="stylesheet" />
+    <link id="theme" href="css/light.css" rel="stylesheet" />
+    <script src="babylon-js-master/three.js"></script>
+     <script src="babylon-js-master/examples/js/libs/system.min.js"></script> 
+     <script src="babylon-js-master/examples/js/controls/EditorControls.js"></script> 
+     <script src="babylon-js-master/examples/js/controls/TransformControls.js"></script> 
+     <script src="babylon-js-master/examples/js/libs/jszip.min.js"></script> 
+     <script src="babylon-js-master/examples/js/loaders/AMFLoader.js"></script> 
+     <script src="babylon-js-master/examples/js/loaders/AWDLoader.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/BabylonLoader.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/ColladaLoader2.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/FBXLoader2.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/KMZLoader.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/MD2Loader.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/OBJLoader.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/PlayCanvasLoader.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/PLYLoader.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/STLLoader.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/TGALoader.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/UTF8Loader.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/VRMLLoader.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/VTKLoader.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/ctm/lzma.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/ctm/ctm.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/ctm/CTMLoader.js"></script>
+    <script src="babylon-js-master/examples/js/exporters/OBJExporter.js"></script>
+    <script src="babylon-js-master/examples/js/exporters/STLExporter.js"></script>
+    <script src="babylon-js-master/examples/js/loaders/deprecated/SceneLoader.js"></script> 
+     <script src="babylon-js-master/examples/js/renderers/Projector.js"></script> 
+     <script src="babylon-js-master/examples/js/renderers/CanvasRenderer.js"></script>
+     <script src="babylon-js-master/examples/js/renderers/RaytracingRenderer.js"></script> 
+  <script src="babylon-js-master/examples/js/renderers/SoftwareRenderer.js"></script> 
+     <script src="babylon-js-master/examples/js/renderers/SVGRenderer.js"></script>  
+     <link rel="stylesheet" href="babylon-js-master/libs/codemirror/codemirror.css"> 
+    <link rel="stylesheet" href="babylon-js-master/libs/codemirror/theme/monokai.css">
+    <script src="babylon-js-master/libs/codemirror/codemirror.js"></script>
+    <script src="babylon-js-master/libs/codemirror/mode/javascript.js"></script>
+    <script src="babylon-js-master/libs/codemirror/mode/glsl.js"></script>
+     <script src="babylon-js-master/libs/esprima.js"></script> 
+    <script src="babylon-js-master/libs/jsonlint.js"></script>
+    <script src="babylon-js-master/libs/glslprep.min.js"></script>-->
+    <link rel="stylesheet" href="babylon-js-master/libs/codemirror/addon/dialog.css">
+    <link rel="stylesheet" href="babylon-js-master/libs/codemirror/addon/show-hint.css">
+    <link rel="stylesheet" href="babylon-js-master/libs/codemirror/addon/tern.css">
+    <script src="babylon-js-master/libs/codemirror/addon/dialog.js"></script>
+    <script src="babylon-js-master/libs/codemirror/addon/show-hint.js"></script>
+    <script src="babylon-js-master/libs/codemirror/addon/tern.js"></script>
+    <script src="babylon-js-master/libs/acorn/acorn.js"></script>
+    <script src="babylon-js-master/libs/acorn/acorn_loose.js"></script>
+     <script src="babylon-js-master/libs/acorn/walk.js"></script>
+     <script src="babylon-js-master/libs/ternjs/polyfill.js"></script>
+    <script src="babylon-js-master/libs/ternjs/signal.js"></script>
+     <script src="babylon-js-master/libs/ternjs/tern.js"></script> 
+     <script src="babylon-js-master/libs/ternjs/def.js"></script> 
+     <script src="babylon-js-master/libs/ternjs/comment.js"></script> 
+     <script src="babylon-js-master/libs/ternjs/infer.js"></script> 
+    <script src="babylon-js-master/libs/ternjs/doc_comment.js"></script>
+    <script src="babylon-js-master/libs/tern-threejs/threejs.js"></script>
+    <script src="babylon-js-master/libs/signals.min.js"></script>
+    <script src="babylon-js-master/libs/ui.js"></script>
+    <script src="babylon-js-master/libs/ui.three.js"></script>
+    <script src="babylon-js-master/libs/app.js"></script>
+    <script src="babylon-js-master/Player.js"></script>
+    <script src="babylon-js-master/Script.js"></script>
+     <script src="babylon-js-master/examples/js/effects/VREffect.js"></script>
+    <script src="babylon-js-master/examples/js/controls/VRControls.js"></script>
+      <script src="babylon-js-master/examples/js/vr/WebVR.js"></script>
+    <script src="babylon-js-master/Storage.js"></script>
+    <script src="babylon-js-master/Editor.js"></script>
+    <script src="babylon-js-master/Config.js"></script>
+    <script src="babylon-js-master/History.js"></script>
+    <script src="babylon-js-master/Loader.js"></script>
+     <script src="babylon-js-master/Menubar.js"></script>
+     <script src="babylon-js-master/Menubar.File.js"></script>
+    <script src="babylon-js-master/Menubar.Edit.js"></script>
+    <script src="babylon-js-master/Menubar.Add.js"></script>
+     <script src="babylon-js-master/Menubar.Play.js"></script>
+    <script src="babylon-js-master/Menubar.View.js"></script> -->
+    <script src="babylon-js-master/Menubar.Examples.js"></script>
+    <script src="babylon-js-master/Menubar.Help.js"></script>
+    <script src="babylon-js-master/Menubar.Status.js"></script>
+    <script src="babylon-js-master/Sidebar.js"></script>
+    <script src="babylon-js-master/Sidebar.Scene.js"></script>
+    <script src="babylon-js-master/Sidebar.Project.js"></script>
+    <script src="babylon-js-master/Sidebar.Settings.js"></script>
+    <script src="babylon-js-master/Sidebar.Properties.js"></script>
+    <script src="babylon-js-master/Sidebar.Object.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.Geometry.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.BufferGeometry.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.Modifiers.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.BoxGeometry.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.CircleGeometry.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.CylinderGeometry.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.IcosahedronGeometry.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.PlaneGeometry.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.SphereGeometry.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.TorusGeometry.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.TorusKnotGeometry.js"></script>
+    <script src="babylon-js-master/examples/js/geometries/TeapotBufferGeometry.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.TeapotBufferGeometry.js"></script>
+    <script src="babylon-js-master/Sidebar.Geometry.LatheGeometry.js"></script>
+    <script src="babylon-js-master/Sidebar.Material.js"></script>
+    <script src="babylon-js-master/Sidebar.Animation.js"></script>
+    <script src="babylon-js-master/Sidebar.Script.js"></script>
+    <script src="babylon-js-master/Sidebar.History.js"></script>
+     <script src="babylon-js-master/Toolbar.js"></script>-->
+    <script src="babylon-js-master/Viewport.js"></script>
+     <script src="babylon-js-master/Viewport.Info.js"></script>
+    <script src="babylon-js-master/Command.js"></script>
+    <script src="babylon-js-master/commands/AddObjectCommand.js"></script>
+    <script src="babylon-js-master/commands/RemoveObjectCommand.js"></script>
+     <script src="babylon-js-master/commands/MoveObjectCommand.js"></script>
+     <script src="babylon-js-master/commands/SetPositionCommand.js"></script>
+     <script src="babylon-js-master/commands/SetRotationCommand.js"></script>
+     <script src="babylon-js-master/commands/SetScaleCommand.js"></script>
+     <script src="babylon-js-master/commands/SetValueCommand.js"></script>
+     <script src="babylon-js-master/commands/SetUuidCommand.js"></script>
+     <script src="babylon-js-master/commands/SetColorCommand.js"></script>
+     <script src="babylon-js-master/commands/SetGeometryCommand.js"></script>
+     <script src="babylon-js-master/commands/SetGeometryValueCommand.js"></script>
+     <script src="babylon-js-master/commands/MultiCmdsCommand.js"></script>
+     <script src="babylon-js-master/commands/AddScriptCommand.js"></script>
+    <script src="babylon-js-master/commands/RemoveScriptCommand.js"></script> 
+     <script src="babylon-js-master/commands/SetScriptValueCommand.js"></script> 
+     <script src="babylon-js-master/commands/SetMaterialCommand.js"></script>
+    <script src="babylon-js-master/commands/SetMaterialValueCommand.js"></script>
+    <script src="babylon-js-master/commands/SetMaterialColorCommand.js"></script>
+     <script src="babylon-js-master/commands/SetMaterialMapCommand.js"></script>
+     <script src="babylon-js-master/commands/SetSceneCommand.js"></script> 
+     <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="qyqgfqd9j8z890t"></script> -->
+    <script src="babylon-js-master/libs/html2canvas.js"></script>
+    <script src="babylon-js-master/libs/three.html.js"></script>
+
+    <script>
+    
+      window.URL = window.URL || window.webkitURL;
+      window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
+  var meshCount = 0;
+
+      Number.prototype.format = function (){
+        return this.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+      };
+
+      //
+
+      var editor = new Editor();
+
+      var viewport = new Viewport( editor );
+      document.body.appendChild( viewport.dom );
+
+      var script = new Script( editor );
+      document.body.appendChild( script.dom );
+
+      var player = new Player( editor );
+      document.body.appendChild( player.dom );
+
+      //~ var toolbar = new Toolbar( editor );
+      //~ document.body.appendChild( toolbar.dom );
+
+      //var menubar = new Menubar( editor );
+      //document.body.appendChild( menubar.dom );
+
+      var sidebar = new Sidebar( editor );
+      //~ document.body.appendChild( sidebar.dom );
+
+      var modal = new UI.Modal();
+      document.body.appendChild( modal.dom );
+
+      //
+
+      editor.setTheme( editor.config.getKey( 'theme' ) );
+
+      editor.storage.init( function () {
+
+        editor.storage.get( function ( state ) {
+
+          if ( isLoadingFromHash ) return;
+
+          if ( state !== undefined ) {
+
+            editor.fromJSON( state );
+
+          }
+
+          var selected = editor.config.getKey( 'selected' );
+
+          if ( selected !== undefined ) {
+
+            editor.selectByUuid( selected );
+
+          }
+
+        } );
+
+        //
+
+        var timeout;
+
+        function saveState( scene ) {
+
+          if ( editor.config.getKey( 'autosave' ) === false ) {
+
+            return;
+
+          }
+
+          clearTimeout( timeout );
+
+          timeout = setTimeout( function () {
+
+            editor.signals.savingStarted.dispatch();
+
+            timeout = setTimeout( function () {
+
+              editor.storage.set( editor.toJSON() );
+
+              editor.signals.savingFinished.dispatch();
+
+            }, 100 );
+
+          }, 1000 );
+
+        };
+
+        var signals = editor.signals;
+
+        signals.geometryChanged.add( saveState );
+        signals.objectAdded.add( saveState );
+        signals.objectChanged.add( saveState );
+        signals.objectRemoved.add( saveState );
+        signals.materialChanged.add( saveState );
+        signals.sceneBackgroundChanged.add( saveState );
+        signals.sceneFogChanged.add( saveState );
+        signals.sceneGraphChanged.add( saveState );
+        signals.scriptChanged.add( saveState );
+        signals.historyChanged.add( saveState );
+
+        signals.showModal.add( function ( content ) {
+
+          modal.show( content );
+
+        } );
+
+      } );
+
+      //
+
+      document.addEventListener( 'dragover', function ( event ) {
+
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'copy';
+
+      }, false );
+
+      document.addEventListener( 'drop', function ( event ) {
+
+        event.preventDefault();
+
+        if ( event.dataTransfer.files.length > 0 ) {
+
+          editor.loader.loadFile( event.dataTransfer.files[ 0 ] );
+
+        }
+
+      }, false );
+
+      document.addEventListener( 'keydown', function ( event ) {
+
+        switch ( event.keyCode ) {
+
+           case 8: // backspace
+
+            event.preventDefault(); // prevent browser back
+
+           case 46: // delete
+
+           var object = editor.selected;
+
+            if ( confirm( 'Delete ' + object.name + '?' ) === false ) return;
+
+           var parent = object.parent;
+            if ( parent !== null ) editor.execute( new RemoveObjectCommand( object ) );
+
+           break;
+
+           case 90: // Register Ctrl-Z for Undo, Ctrl-Shift-Z for Redo
+
+             if ( event.ctrlKey && event.shiftKey ) {
+
+             editor.redo();
+
+            } else if ( event.ctrlKey ) {
+
+              editor.undo();
+
+            }
+
+            break;
+
+          case 87: // Register W for translation transform mode
+
+            editor.signals.transformModeChanged.dispatch( 'translate' );
+
+            break;
+
+          case 69: // Register E for rotation transform mode
+
+            editor.signals.transformModeChanged.dispatch( 'rotate' );
+
+            break;
+
+          case 82: // Register R for scaling transform mode
+
+            editor.signals.transformModeChanged.dispatch( 'scale' );
+
+            break;
+
+        }
+
+      }, false );
+
+      function onWindowResize( event ) {
+
+        editor.signals.windowResize.dispatch();
+
+      }
+
+      window.addEventListener( 'resize', onWindowResize, false );
+
+      onWindowResize();
+
+      //
+
+      var isLoadingFromHash = false;
+      var hash = window.location.hash;
+
+      if ( hash.substr( 1, 5 ) === 'file=' ) {
+
+        var file = hash.substr( 6 );
+
+        if ( confirm( 'Any unsaved data will be lost. Are you sure?' ) ) {
+
+          var loader = new THREE.FileLoader();
+          loader.crossOrigin = '';
+          loader.load( file, function ( text ) {
+
+            editor.clear();
+            editor.fromJSON( JSON.parse( text ) );
+
+          } );
+
+          isLoadingFromHash = true;
+
+        }
+
+      }
+
+      
+      window.addEventListener( 'message', function ( event ) {
+
+        editor.clear();
+        editor.fromJSON( event.data );
+
+      }, false );
+      
+
+      // VR
+
+      var groupVR;
+
+      // TODO: Use editor.signals.enteredVR (WebVR 1.0)
+
+      editor.signals.enterVR.add( function () {
+
+        if ( groupVR === undefined ) {
+
+          groupVR = new THREE.HTMLGroup( viewport.dom );
+          editor.sceneHelpers.add( groupVR );
+
+          var mesh = new THREE.HTMLMesh( sidebar.dom );
+          mesh.position.set( 15, 0, 15 );
+          mesh.rotation.y = - 0.5;
+          groupVR.add( mesh );
+
+          var signals = editor.signals;
+
+          function updateTexture() {
+
+            mesh.material.map.update();
+
+          }
+
+          signals.objectSelected.add( updateTexture );
+          signals.objectAdded.add( updateTexture );
+          signals.objectChanged.add( updateTexture );
+          signals.objectRemoved.add( updateTexture );
+          signals.sceneGraphChanged.add( updateTexture );
+          signals.historyChanged.add( updateTexture );
+
+        }
+
+        groupVR.visible = true;
+
+      } );
+
+      editor.signals.exitedVR.add( function () {
+
+        if ( groupVR !== undefined ) groupVR.visible = false;
+
+      } );
+
+  document.addEventListener('keydown', (event) => {
+    console.log('abc')
+      const keyName = event.key
+          console.log('added cylinder')
+
+      if (keyName === 'c') {
+          var radiusTop = 1;
+          var radiusBottom = 1;
+          var height = 2;
+          var radiusSegments = 32;
+          var heightSegments = 1;
+          var openEnded = false;
+
+          var geometry = new THREE.CylinderBufferGeometry( radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded );
+          var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+          mesh.name = 'Cylinder ' + ( ++ meshCount );
+
+          editor.execute( new AddObjectCommand( mesh ) );
+
+      }
+      else if( keyName === 's' ) {
+        var radius = 1;
+        var widthSegments = 32;
+        var heightSegments = 16;
+        var phiStart = 0;
+        var phiLength = Math.PI * 2;
+        var thetaStart = 0;
+        var thetaLength = Math.PI;
+
+        var geometry = new THREE.SphereBufferGeometry( radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength );
+        var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+        mesh.name = 'Sphere ' + ( ++ meshCount );
+
+        editor.execute( new AddObjectCommand( mesh ) );
+      } else if(keyName === 'b' ) {
+          var geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+          var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+          mesh.name = 'Box ' + ( ++ meshCount );
+
+          editor.execute( new AddObjectCommand( mesh ) );
+
+      } else if( keyName === 't' ) {
+         var radius = 2;
+            var tube = 1;
+            var radialSegments = 32;
+            var tubularSegments = 12;
+            var arc = Math.PI * 2;
+
+            var geometry = new THREE.TorusBufferGeometry( radius, tube, radialSegments, tubularSegments, arc );
+            var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+            mesh.name = 'Torus ' + ( ++ meshCount );
+
+            editor.execute( new AddObjectCommand( mesh ) );
+
+      } else if( keyName === 'x' ) {
+        var object = editor.selected;
+
+        if ( confirm( 'Delete ' + object.name + '?' ) === false ) return;
+
+        var parent = object.parent;
+        if ( parent === undefined ) return; // avoid deleting the camera or scene
+
+        editor.execute( new RemoveObjectCommand( object ) );
+
+      } else if( keyName === 'l' ) {
+        var color = 0xffffff;
+        var intensity = 1;
+        var distance = 0;
+
+        var light = new THREE.PointLight( color, intensity, distance );
+        light.name = 'PointLight ' + ( ++meshCount  );
+
+        editor.execute( new AddObjectCommand( light ) );
+      }
+      
+      
+     else if (keyName === 'o') {
+          var radiusTop = 0;
+          var radiusBottom = 1;
+          var height = 2;
+          var radiusSegments = 32;
+          var heightSegments = 1;
+          var openEnded = false;
+
+          var geometry = new THREE.CylinderBufferGeometry( radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded );
+          var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+          mesh.name = 'Cone ' + ( ++ meshCount );
+
+          editor.execute( new AddObjectCommand( mesh ) );
+
+    }
+    
+     else if (keyName === 'k') {
+          var radiusTop = 1;
+          var radiusBottom = 0;
+          var height = 2;
+          var radiusSegments = 32;
+          var heightSegments = 1;
+          var openEnded = false;
+
+          var geometry = new THREE.CylinderBufferGeometry( radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded );
+          var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+          mesh.name = 'Figure ' + ( ++ meshCount );
+
+          editor.execute( new AddObjectCommand( mesh ) );
+}
+
+
+
+    
+      })
+
+    </script>
+  </body>
+</html>
